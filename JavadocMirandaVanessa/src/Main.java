@@ -1,9 +1,5 @@
 import java.util.Scanner;
 
-/**
- * Clase principal que muestra un menú para realizar
- * diferentes operaciones matemáticas básicas.
- */
 public class Main {
 
     public static void main(String[] args) {
@@ -11,7 +7,7 @@ public class Main {
         int opcion;
 
         do {
-            System.out.println("===== MENU =====");
+            System.out.println("MENU ");
             System.out.println("1. Calcular IMC");
             System.out.println("2. Calcular área de un rectángulo");
             System.out.println("3. Convertir °C a °F");
