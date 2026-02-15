@@ -21,7 +21,7 @@ public class Main {
         for(Animal animal : animales){
             animal.hacerSonido();
         }
-        System.out.println("_________________");
+        System.out.println("______________________________");
         Animal miercoles = new Perro( "miercoles");
 
         if(miercoles instanceof Perro){
