@@ -19,6 +19,7 @@ public class Main {
             System.out.println("0)Salir");
             System.out.println("Elige la opcion a realizar:");
 
+
             opcion = sc.nextInt();
             if (opcion == 1) {
                 alta();
@@ -38,7 +39,7 @@ public class Main {
             if (opcion == 6) {
                 reportes();
             }
-        } while (opcion == 0);
+        } while (opcion != 0);
     }
 
 
@@ -52,9 +53,7 @@ public class Main {
             return;
         }
 
-        for (int ==0;
-        i < alumnos.length;
-        i++){
+        for (int i =0; i < alumnos.length; i++){
             Alumno a = alumnos[i];
 
             if (a != null && a.id == id) {
@@ -78,7 +77,7 @@ public class Main {
             return;
         }
 
-        for (int i = 0, i<alumnos.length; i++){
+        for (int i = 0; i<alumnos.length; i++){
             if (alumnos[i] == null) {
                 alumnos[i] = new Alumno(id, nombre, promedio);
                 System.out.println("Alumno guardado");
@@ -142,18 +141,72 @@ public class Main {
         System.out.println("No encontrado");
     }
 
-    static void listar(){
+    static void listar() {
         for (int i = 0; i < alumnos.length; i++) {
-            Alumno a =alumnos[i];
+            Alumno a = alumnos[i];
             if (a != null && a.activo == true) {
 
-                System.out.println(a.id + "")
+                System.out.println(a.id + " " + a.nombre + " " + a.promedio);
             }
+        }
+    }
 
+    static void reportes() {
+
+        double suma = 0;
+        int contador = 0;
+
+        double mayor = 0;
+        double menor = 10;
+
+        int idMayor = 0;
+        int idMenor = 0;
+
+        String nombreMayor = "";
+        String nombreMenor = "";
+
+        int mayores8 = 0;
+
+        for (int i = 0; i < alumnos.length; i++) {
+
+            Alumno a = alumnos[i];
+
+            if (a != null && a.activo == true) {
+
+                suma = suma + a.promedio;
+                contador++;
+
+                if (a.promedio > mayor) {
+                    mayor = a.promedio;
+                    idMayor = a.id;
+                    nombreMayor = a.nombre;
+                }
+
+                if (a.promedio < menor) {
+                    menor = a.promedio;
+                    idMenor = a.id;
+                    nombreMenor = a.nombre;
+                }
+
+                if (a.promedio >= 8) {
+                    mayores8++;
+                }
+            }
         }
 
+        if (contador == 0) {
+            System.out.println("No hay activos");
+            return;
         }
 
+        double promedioGeneral = suma / contador;
+
+        System.out.println("Promedio general: " + promedioGeneral);
+        System.out.println("Mayor promedio: " + idMayor + " " + nombreMayor + " " + mayor);
+        System.out.println("Menor promedio: " + idMenor + " " + nombreMenor + " " + menor);
+        System.out.println("Alumnos con promedio mayor o igual a 8: " + mayores8);
+    }
+}
 
 
 

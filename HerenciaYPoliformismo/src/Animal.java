@@ -8,11 +8,11 @@ public class Animal {
 
 
     public void hacerSonido() {
-        System.out.println(name + "Hace un sonido x");
+        System.out.println(name + " Hace un sonido x");
     }
 
     public void comer() {
-        System.out.println(name + "Esta comiendo");
+        System.out.println(name + " Esta comiendo");
 
     }
 }

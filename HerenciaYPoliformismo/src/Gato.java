@@ -5,7 +5,7 @@ public class Gato extends Animal{
     }
     @Override
     public void hacerSonido(){
-        System.out.println(name + "hace Miau o Rawrl");
+        System.out.println(name + " hace Miau o Rawrl");
 
     }
 }
