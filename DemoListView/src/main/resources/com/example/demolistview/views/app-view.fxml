@@ -29,9 +29,10 @@
             </GridPane>
          </children>
       </HBox>
-      <HBox prefHeight="100.0" prefWidth="200.0">
+      <HBox prefHeight="130.0" prefWidth="600.0">
          <children>
-            <Label text="Recargar" />
+            <Button mnemonicParsing="false" text="Recargar" />
+            <Button mnemonicParsing="false" text="Agregar" />
          </children>
       </HBox>
    </children>
