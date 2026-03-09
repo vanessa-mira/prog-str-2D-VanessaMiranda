@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 
 import java.io.IOException;
 import java.util.List;
@@ -17,6 +18,11 @@ public class AppController {
     private ListView<String> listView;
     @FXML
     private Label lblMsg;
+
+    @FXML
+    private TextField txtName;
+    @FXML
+    private TextField txtEmail;
 
 
     @FXML
@@ -31,6 +37,29 @@ public class AppController {
         loadFromFile();
         listView.setItems(data);
     }
+    @FXML
+    public void onAddPerson() {
+        try {
+            String name = txtName.getText();
+            String email = txtEmail.getText();
+
+            service.add.Person(name, email);
+            lblMsg.setText("Persona agregada con exito");
+            lblMsg.setStyle("-fx-text-fill: green");
+            txtName.clear();
+            txtEmail.clear();
+            loadFromFile();
+
+        } catch (IOException e) {
+            lblMsg.setText("Hubo un error con el archivo");
+            lblMsg.setStyle("-fx-text-fill: red");
+        } catch (IllegalArgumentException ex) {
+            lblMsg.setText("Hubo un error con los datos");
+            lblMsg.setStyle("-fx-text-fill: red");
+        }
+    }
+
+
 
     private void loadFromFile(){
         try{
