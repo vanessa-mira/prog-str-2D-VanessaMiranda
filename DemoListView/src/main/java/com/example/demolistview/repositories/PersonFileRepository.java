@@ -9,7 +9,7 @@ import java.nio.file.StandardOpenOption;
 import java.util.List;
 
 public class PersonFileRepository {
-    private final Path filePath = Paths.get("data", "persons.csv");
+    private final Path filePath = Paths.get("data", "personas.csv");
 
     private void ensureFileExist() throws IOException {
         if (Files.notExists(filePath)) {

@@ -24,20 +24,27 @@ public class PersonService {
         return result;
     }
 
-    public void addPerson(String name, String email) throws IOException {
-        repo.appendNewLine(name + "," + email);
+    public void addPerson(String name, String email, int edad) throws IOException {
+        repo.appendNewLine(name + "," + email+","+ edad + "\n");
     }
 
     private void validatePerson(String name, String email) {
-        
+
         if (name.isEmpty() || name.length() < 3) {
             throw new IllegalArgumentException("El nombre no cumple con los estandares");
         }
-        String em= (email==null) ? "" : email.trim();
-        if(em.isEmpty()|| !em.contains("@") || !em.contains(".")){
+        String em = (email == null) ? "" : email.trim();
+        if (em.isEmpty() || !em.contains("@") || !em.contains(".")) {
             throw new IllegalArgumentException("El correo es incorrecto");
         }
-        int edadNum;
+    }
+
+    public List<String> loadDataforList() {
+        return List.of();
+    }
+}
+
+
         
     
 
