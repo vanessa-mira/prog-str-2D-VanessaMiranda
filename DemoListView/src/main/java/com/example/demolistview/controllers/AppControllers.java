@@ -43,7 +43,7 @@ public class AppController {
             String name = txtName.getText();
             String email = txtEmail.getText();
 
-            service.add.Person(name, email);
+            service.addPerson(name, email);
             lblMsg.setText("Persona agregada con exito");
             lblMsg.setStyle("-fx-text-fill: green");
             txtName.clear();
@@ -62,15 +62,17 @@ public class AppController {
 
 
     private void loadFromFile(){
-        try{
+        try {
             List<String> items = service.loadDataforList();
             data.setAll(items);
             lblMsg.setText("Datos cargados exitosamente ");
             lblMsg.setStyle("-fx-text-fill: green");
-        } catch (IOException e) {
+        }catch (IOException e){
             lblMsg.setText(e.getMessage());
             lblMsg.setStyle("-fx-text-fill: red");
+
         }
+
 
     }
 

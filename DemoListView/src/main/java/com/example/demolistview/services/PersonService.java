@@ -18,8 +18,26 @@ public class PersonService {
             String[] parts = line.split(",", -1);
             String name = parts[0].trim();
             String correo = parts[1].trim();
+
             result.add(name + "-" + correo);
         }
         return result;
     }
-}
+
+    public void addPerson(String name, String email) throws IOException {
+        repo.appendNewLine(name + "," + email);
+    }
+
+    private void validatePerson(String name, String email) {
+        
+        if (name.isEmpty() || name.length() < 3) {
+            throw new IllegalArgumentException("El nombre no cumple con los estandares");
+        }
+        String em= (email==null) ? "" : email.trim();
+        if(em.isEmpty()|| !em.contains("@") || !em.contains(".")){
+            throw new IllegalArgumentException("El correo es incorrecto");
+        }
+        int edadNum;
+        
+    
+
