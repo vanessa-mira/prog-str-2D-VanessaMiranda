@@ -35,11 +35,16 @@ public class AppController {
     public void initialize() throws IOException { //se va a ejecutar el inicio, en cuanto se cargue el controller
         //Inicializar ListView
 
-        listView.setItems(data);
+
         loadFromFile();
+        listView.getSelectionModel().selectedItemProperty().addListener((obs,oldValue,newValue) -> {
+                    loadDataToForm(String.valueOf(newValue)); //String con el valor del row 0 test-email@gmail.com-18
+                }
+
+        );
+        listView.setItems(data);
+
     }
-
-
 
 
     @FXML
@@ -81,7 +86,30 @@ public class AppController {
         }
     }
 
+    @FXML
+    public void onUpdate() {
+        int index = listView.getSelectionModel().getSelectedIndex();
+        String name = txtName.getText();
+        String email = txtEmail.getText();
+        String edad = txtEdad.getText();
+        try {
+            service.updatePerson(index, name, email, edad);
+            lblMsg.setText("Actualizacion correcta");
+            lblMsg.setStyle("-fx-text-fill: green");
+            txtName.clear();
+            txtEmail.clear();
+            txtEdad.clear();
+            loadFromFile();
 
+        } catch (IOException e) {
+            lblMsg.setText("Hubo un error con el archivo");
+            lblMsg.setStyle("-fx-text-fill:red");
+        } catch (IllegalArgumentException e) {
+            lblMsg.setText("Hubo un error con los datos");
+            lblMsg.setStyle("-fx-text-fill:red");
+
+        }
+    }
 
     private void loadFromFile() throws IOException {
         List<String> items = service.loadDataForList();
@@ -91,5 +119,13 @@ public class AppController {
 
 
     }
+    private void loadDataToForm(String item){
 
+        String[] items = item.split("-");
+        txtName.setText(items[0]);
+        txtEmail.setText(items[1]);
+        txtEdad.setText(items[2]);
+
+    }
 }
+
