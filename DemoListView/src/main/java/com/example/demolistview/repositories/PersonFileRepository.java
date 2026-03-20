@@ -36,4 +36,8 @@ public class PersonFileRepository {
                 StandardOpenOption.TRUNCATE_EXISTING); //
 
     }
+
+
+    public void appendAllLines(List<String> lines) {
+    }
 }
