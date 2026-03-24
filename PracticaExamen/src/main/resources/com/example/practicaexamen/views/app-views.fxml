@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="10" alignment="CENTER"
+      xmlns="http://javafx.com/javafx/17.0.2"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.practicaexamen.Controlador.ContactoController">
+    <TextField fx:id="txtNombre" promptText="Nombre"/>
+    <TextField fx:id="txtTelefono" promptText="Teléfono"/>
+    <ComboBox fx:id="cbParentesco" promptText="Parentesco"/>
+    <HBox spacing="10" alignment="CENTER">
+        <Button text="Agregar" onAction="#agregar"/>
+        <Button text="Buscar" onAction="#buscar"/>
+        <Button text="Actualizar" onAction="#actualizar"/>
+        <Button text="Eliminar" onAction="#eliminar"/>
+        <Button text="Limpiar" onAction="#limpiar"/>
+    </HBox>
+    <ListView fx:id="listViewContactos" prefHeight="200"/>
+
+</VBox>
